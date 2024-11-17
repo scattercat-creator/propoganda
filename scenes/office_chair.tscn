@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmhmb22bxmqln"]
+
+[ext_resource type="Texture2D" uid="uid://ciwytgscs3avh" path="res://assets/tiles/computer (1).png" id="1_chrf8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfjuu"]
+atlas = ExtResource("1_chrf8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14apy"]
+atlas = ExtResource("1_chrf8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsett"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfjuu")
+}],
+"loop": true,
+"name": &"no_chair",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14apy")
+}],
+"loop": true,
+"name": &"with_chair",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4yqr"]
+size = Vector2(65, 52)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nsett")
+animation = &"with_chair"
+autoplay = "with_chair"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -3)
+shape = SubResource("RectangleShape2D_i4yqr")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bb3tuy2jtdlfr"]
+
+[ext_resource type="Texture2D" uid="uid://bq8lcmkrl7mxn" path="res://assets/sprites/tom.png" id="1_oq57i"]
+[ext_resource type="Script" path="res://assets/scripts/tom.gd" id="1_ujbxf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65sm6"]
+atlas = ExtResource("1_oq57i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51tdp"]
+atlas = ExtResource("1_oq57i")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfq5t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65sm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51tdp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayw5p"]
+size = Vector2(19, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc8sp"]
+size = Vector2(37, 38)
+
+[node name="Tom" type="CharacterBody2D"]
+script = ExtResource("1_ujbxf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yfq5t")
+autoplay = "default"
+frame_progress = 0.24905
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -4.5)
+shape = SubResource("RectangleShape2D_ayw5p")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_mc8sp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://dutxkyi3ctykb"]
+
+[ext_resource type="Texture2D" uid="uid://bnc8gkch04p64" path="res://assets/sprites/alcoholism text (1).png" id="1_qdvj6"]
+[ext_resource type="Texture2D" uid="uid://cgtsjs535764i" path="res://assets/sprites/empty.png" id="2_2i8q3"]
+[ext_resource type="Script" path="res://assets/scripts/droppin.gd" id="3_b8oos"]
+[ext_resource type="Texture2D" uid="uid://n7rlqtx8ityj" path="res://assets/sprites/unlocked.png" id="3_ilaxs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj27j"]
+atlas = ExtResource("1_qdvj6")
+region = Rect2(0, 0, 170, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83yf5"]
+atlas = ExtResource("1_qdvj6")
+region = Rect2(0, 16, 170, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqsne"]
+atlas = ExtResource("2_2i8q3")
+region = Rect2(16, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0ruv"]
+atlas = ExtResource("3_ilaxs")
+region = Rect2(0, 0, 125, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqutx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj27j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83yf5")
+}],
+"loop": true,
+"name": &"alcoholism",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqsne")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0ruv")
+}],
+"loop": true,
+"name": &"unlocked",
+"speed": 5.0
+}]
+
+[node name="lolsigns" type="AnimatedSprite2D"]
+rotation = 0.233425
+sprite_frames = SubResource("SpriteFrames_yqutx")
+animation = &"alcoholism"
+autoplay = "default"
+frame_progress = 0.235746
+script = ExtResource("3_b8oos")

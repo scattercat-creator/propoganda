@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwe0os1rw71li"]
+
+[ext_resource type="Script" path="res://assets/scripts/points.gd" id="1_76fv8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihthv"]
+bg_color = Color(0.810283, 0.429237, 0.824231, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.985889, 0.713061, 0.783018, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7723"]
+bg_color = Color(0.917259, 0.413435, 0.489139, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.984314, 0.713726, 0.784314, 1)
+border_blend = true
+
+[node name="Points" type="MarginContainer"]
+offset_right = 516.0
+offset_bottom = 77.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_76fv8")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ihthv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e7723")
+max_value = 5.0
+show_percentage = false
